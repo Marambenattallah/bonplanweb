@@ -1,42 +1,45 @@
 import React, { useState } from "react";
-import axios from "axios"; // Import Axios
-import { useNavigate } from "react-router-dom"; // Import pour la redirection
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 import logoo from "./assets/finale.png";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate(); // Hook pour la redirection
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+  
     if (!email || !password) {
-      setError("Veuillez remplir tous les champs.");
+      navigate("/erreur-login");
       return;
     }
-
+  
     try {
       const response = await axios.post("http://localhost:3000/user/login-admin", {
         email,
         password,
       });
-
+      console.log("Réponse API :", response.data);
+  
       const { token, role } = response.data;
-      
-      // Vérifier si l'utilisateur est un admin
+  
       if (role === "admin") {
-        localStorage.setItem("token", token); // Stocker le token
-        navigate("/dashboard"); // Rediriger vers le tableau de bord admin
+        localStorage.setItem("token", token);
+        navigate("/dashboard");
+      } else if (role === "manager") {
+        localStorage.setItem("token", token);
+        navigate("/dashboardmanager"); // Page spéciale pour le manager
       } else {
-        setError("Accès refusé. Vous n'êtes pas administrateur.");
+        navigate("/erreurlogin");
       }
     } catch (err) {
-      setError("Identifiants incorrects ou erreur serveur.");
+      navigate("/erreurlogin");
     }
   };
+  
 
   return (
     <div className="flex h-screen">
@@ -49,7 +52,6 @@ const Login = () => {
       <div className="w-1/2 flex justify-center items-center bg-white p-8">
         <div className="w-full max-w-sm bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-6 text-center">Login Admin</h2>
-          {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label className="block text-sm font-semibold text-gray-600 mb-2">Email</label>

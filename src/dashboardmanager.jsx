@@ -4,7 +4,7 @@ import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import {  FaTachometerAlt, FaUser, FaStore } from "react-icons/fa";
 
-const Dashboard = () => {
+const Dashboardmanager = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -25,11 +25,9 @@ const Dashboard = () => {
           <li className="flex items-center p-2 hover:bg-gray-100 cursor-pointer rounded">
             <FaTachometerAlt className="mr-2" /> Dashboard
           </li>
+          
           <li className="flex items-center p-2 hover:bg-gray-100 cursor-pointer rounded">
-            <FaUser className="mr-2" /> Users
-          </li>
-          <li className="flex items-center p-2 hover:bg-gray-100 cursor-pointer rounded">
-            <FaStore className="mr-2" /> Shop
+            <FaStore className="mr-2" /> Avis Shop
           </li>
           
         </ul>
@@ -45,11 +43,11 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-col items-center mt-10">
  
-  <h1 className="text-3xl font-bold text-center">Bienvenue sur le Tableau de Bord Admin</h1>
+  <h1 className="text-3xl font-bold text-center">Bienvenue sur le Tableau de Bord Manager</h1>
 </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Dashboardmanager;
