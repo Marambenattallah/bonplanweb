@@ -4,7 +4,9 @@ import Dashboard from "./dashboard";  // Avec une majuscule et "./"
 import ErreurLogin from "./erreurlogin";
 import Dashboardmanager from "./dashboardmanager";
 import TestDash from "./testdash"; // Changer "testdash" en "TestDash" (avec une majuscule)
-
+import KidsLandManagerDashboard from "./managerdashboard";
+import Kasabahmanager from "./kasabahdashboard";
+import SoussepalaceManagerDashboard from "./soussepalace";
 function App() {
   return (
     <Router>
@@ -14,6 +16,9 @@ function App() {
         <Route path="/erreurlogin" element={<ErreurLogin />} />
         <Route path="/dashboardmanager" element={<Dashboardmanager />} />
         <Route path="/testDash" element={<TestDash />} /> {/* Corrigé ici */}
+        <Route path="/managerdashboard" element={<KidsLandManagerDashboard />} />
+        <Route path="/kasabahdashboard" element={<Kasabahmanager />} />
+        <Route path="/soussepalace" element={<SoussepalaceManagerDashboard />} />
       </Routes>
     </Router>
   );

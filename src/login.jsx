@@ -29,11 +29,15 @@ const Login = () => {
       if (role === "admin") {
         localStorage.setItem("token", token);
         navigate("/testDash");
-      } else if (role === "manager") {
+      } else if (role === "manager" && email=="kidsland@gmail.com") {
         localStorage.setItem("token", token);
-        navigate("/testDash"); // Page spéciale pour le manager
-      } else {
-        navigate("/erreurlogin");
+        navigate("/managerdashboard"); // Page spéciale pour le manager
+      } else if (role === "manager" && email=="lakasba@gmail.com") {
+        localStorage.setItem("token", token);
+        navigate("/kasabahdashboard"); // Page spéciale pour le manager
+      } else if(role==="manager" && email=="palace@gmail.com") {
+        navigate("/soussepalace");
+        localStorage.setItem("token", token);
       }
     } catch (err) {
       navigate("/erreurlogin");
