@@ -28,10 +28,10 @@ const Login = () => {
   
       if (role === "admin") {
         localStorage.setItem("token", token);
-        navigate("/dashboard");
+        navigate("/testDash");
       } else if (role === "manager") {
         localStorage.setItem("token", token);
-        navigate("/dashboardmanager"); // Page spéciale pour le manager
+        navigate("/testDash"); // Page spéciale pour le manager
       } else {
         navigate("/erreurlogin");
       }
